@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { fetchPokemonStats } from '../../redux/actions/pokemon';
+import { getPokemonStatsByName } from '../../redux/selectors/pokemon';
 
 import {
   SpriteImage,
@@ -9,30 +14,48 @@ import {
   H2Style,
 } from '../../styles';
 
-const Pokemon = () => {
+const Pokemon = ({fetchPokemonStats, pokemonStats}) => {
   let { name } = useParams();
-  const data = {
-    height: 1,
-    weight: 1,
-    sprites: {
-      front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    }
-  };
+
+  useEffect(() => {
+    fetchPokemonStats(name);
+  }, [ fetchPokemonStats, name ]);
 
   return (
     <>
       <H1Style>{name}</H1Style>
-      <SpriteImage
-        alt={name}
-        src={data?.sprites?.front_default}
-      />
+      { pokemonStats?.sprites?.frontDefault && (
+        <SpriteImage
+          alt={name}
+          src={pokemonStats?.sprites?.frontDefault}
+          height={100}
+          width={100}
+        />
+      )}
       <H2Style>Stats:</H2Style>
       <ul>
-        <li>Weight: {data.weight}</li>
-        <li>Height: {data.height}</li>
+        <li>Weight: {pokemonStats.weight}</li>
+        <li>Height: {pokemonStats.height}</li>
       </ul>
     </>
   );
 };
 
-export default Pokemon;
+
+const mapStateToProps = (state, ownProps) => {
+  const name = ownProps?.match?.params?.name;
+
+  return (
+    { pokemonStats: getPokemonStatsByName(state, name) }
+  )
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const actions = {
+    fetchPokemonStats
+  };
+
+  return bindActionCreators(actions, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pokemon);

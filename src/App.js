@@ -16,9 +16,7 @@ const App = () => (
       <Nav />
       <div>
         <Switch>
-          <Route path="/:name">
-            <Pokemon />
-          </Route>
+          <Route path="/:name" component={Pokemon} />
           <Route path="/">
             <Home />
           </Route>

@@ -7,5 +7,17 @@ export const getPokemon = (state) => {
 export const getPokemonList = (state) => {
   const pokemon = getPokemon(state);
 
-  return _.get(pokemon, 'pokemonList') || [];
+  return _.get(pokemon, 'pokemonList', []);
+};
+
+export const getPokemonStats = (state) => {
+  const pokemon = getPokemon(state);
+
+  return _.get(pokemon, 'pokemonStats', {});
+};
+
+export const getPokemonStatsByName = (state, name) => {
+  const pokemonStats = getPokemonStats(state);
+
+  return _.get(pokemonStats, `${name}`, {});
 };
