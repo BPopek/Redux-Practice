@@ -6,12 +6,11 @@ import PropTypes from 'prop-types';
 import {
   PokemonListStyle,
   PokemonListLinkStyle,
-  Wrapper,
 } from './styles';
 import { fetchPokemon } from '../../redux/actions/pokemon';
 import { getPokemonList } from '../../redux/selectors/pokemon';
 
-const ComponentA = ({
+const Home = ({
   pokemonList,
   fetchPokemon,
 }) => {
@@ -20,27 +19,25 @@ const ComponentA = ({
   }, [ fetchPokemon ]);
 
   return (
-    <Wrapper>
-      <PokemonListStyle>
-        {pokemonList.map((pokemon, index) => (
-          <li key={index}>
-            <PokemonListLinkStyle
-              to={`/${pokemon.name}`}
-            >
-              {pokemon.name}
-            </PokemonListLinkStyle>
-          </li>
-        ))}
-      </PokemonListStyle>
-    </Wrapper>
+    <PokemonListStyle>
+      {pokemonList.map((pokemon, index) => (
+        <li key={index}>
+          <PokemonListLinkStyle
+            to={`/${pokemon.name}`}
+          >
+            {pokemon.name}
+          </PokemonListLinkStyle>
+        </li>
+      ))}
+    </PokemonListStyle>
   );
 };
 
-ComponentA.propTypes = {
+Home.propTypes = {
   pokemonList: PropTypes.array,
 };
 
-ComponentA.defaultProps = {
+Home.defaultProps = {
   pokemonList: []
 };
 
@@ -56,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(actions, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentA);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

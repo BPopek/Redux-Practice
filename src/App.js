@@ -6,7 +6,9 @@ import {
 } from "react-router-dom";
 
 import Nav from './components/Nav/Nav';
+
 import Home from './routes/home/Home';
+import Pokemon from './routes/pokemon/Pokemon';
 
 const App = () => (
   <div className="App">
@@ -14,6 +16,9 @@ const App = () => (
       <Nav />
       <div>
         <Switch>
+          <Route path="/:name">
+            <Pokemon />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
