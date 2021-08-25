@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const H1Style = styled.h1`
-  text-transform: capitalize;
+export const SpriteImage = styled.img`
+  border: solid 1px #000000;
+  border-radius: 50%;
 `;

@@ -7,29 +7,35 @@ import {
   PokemonListStyle,
   PokemonListLinkStyle,
 } from './styles';
-import { fetchPokemon } from '../../redux/actions/pokemon';
+import { fetchPokemonList } from '../../redux/actions/pokemon';
 import { getPokemonList } from '../../redux/selectors/pokemon';
+import {
+  H1Style,
+} from '../../styles';
 
 const Home = ({
   pokemonList,
-  fetchPokemon,
+  fetchPokemonList,
 }) => {
   useEffect(() => {
-    if (pokemonList.length === 0) fetchPokemon();
-  }, [ pokemonList, fetchPokemon ]);
+    if (pokemonList.length === 0) fetchPokemonList();
+  }, [ pokemonList, fetchPokemonList ]);
 
   return (
-    <PokemonListStyle>
-      {pokemonList.map((pokemon, index) => (
-        <li key={index}>
-          <PokemonListLinkStyle
-            to={`/${pokemon.name}`}
-          >
-            {pokemon.name}
-          </PokemonListLinkStyle>
-        </li>
-      ))}
-    </PokemonListStyle>
+    <>
+      <H1Style>Pokemon List</H1Style>
+      <PokemonListStyle>
+        {pokemonList.map((pokemon, index) => (
+          <li key={index}>
+            <PokemonListLinkStyle
+              to={`/${pokemon.name}`}
+            >
+              {pokemon.name}
+            </PokemonListLinkStyle>
+          </li>
+        ))}
+      </PokemonListStyle>
+    </>
   );
 };
 
@@ -47,7 +53,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   const actions = {
-    fetchPokemon
+    fetchPokemonList
   };
 
   return bindActionCreators(actions, dispatch);

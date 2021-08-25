@@ -6,7 +6,7 @@ const setPokemonList = (pokemonList) => ({
   pokemonList,
 });
 
-export const fetchPokemon = () => {
+export const fetchPokemonList = () => {
   return (dispatch) => {
     const LIMIT = 10;
     fetch(`${API_POKEMON}?limit=${LIMIT}`)
