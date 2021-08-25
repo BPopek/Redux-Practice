@@ -6,6 +6,7 @@ import {
 } from './styles';
 import {
   H1Style,
+  H2Style,
 } from '../../styles';
 
 const Pokemon = () => {
@@ -25,6 +26,7 @@ const Pokemon = () => {
         alt={name}
         src={data?.sprites?.front_default}
       />
+      <H2Style>Stats:</H2Style>
       <ul>
         <li>Weight: {data.weight}</li>
         <li>Height: {data.height}</li>
