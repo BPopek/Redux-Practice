@@ -5,3 +5,6 @@
 `nvm use`
 2. Install
 `npm i`
+
+## Running:
+1. `npm start`
