@@ -23,7 +23,7 @@ const Home = ({
 
   return (
     <>
-      <H1Style>Pokemon List</H1Style>
+      <H1Style>Pokémon List</H1Style>
       <PokemonListStyle>
         {pokemonList.map((pokemon, index) => (
           <li key={index}>
