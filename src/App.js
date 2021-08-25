@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+/* With Index
+------------------------------*/
+// Connected
+import ComponentA from './components/ComponentA';
+// Non-connected
+import ComponentB from './components/ComponentB';
+
+/* No Index
+------------------------------*/
+// Connected
+import ComponentC from './components/ComponentC/ComponentC';
+// Non-connected
+import ComponentD from './components/ComponentD/ComponentD';
+
+/* Name all the things!
+------------------------------*/
+import ComponentE from './components/ComponentE/ComponentE';
+
+const App = () => (
+  <div className="App">
+    <ComponentA />
+    <ComponentB />
+    <ComponentC />
+    <ComponentD />
+    <ComponentE />
+  </div>
+);
 
 export default App;
