@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ComponentA from './components/ComponentA';
+import ComponentA from './routes/ComponentA/ComponentA';
 
 const App = () => (
   <div className="App">
