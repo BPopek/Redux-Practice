@@ -15,8 +15,8 @@ const Home = ({
   fetchPokemon,
 }) => {
   useEffect(() => {
-    fetchPokemon();
-  }, [ fetchPokemon ]);
+    if (pokemonList.length === 0) fetchPokemon();
+  }, [ pokemonList, fetchPokemon ]);
 
   return (
     <PokemonListStyle>
