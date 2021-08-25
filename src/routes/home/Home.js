@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import { Wrapper } from './styles';
+import {
+  PokemonListStyle,
+  PokemonListLinkStyle,
+  Wrapper,
+} from './styles';
 import { fetchPokemon } from '../../redux/actions/pokemon';
 import { getPokemonList } from '../../redux/selectors/pokemon';
 
@@ -17,11 +21,17 @@ const ComponentA = ({
 
   return (
     <Wrapper>
-      {pokemonList.map((pokemon, index) => (
-        <p key={index}>
-          {pokemon.name}
-        </p>
-      ))}
+      <PokemonListStyle>
+        {pokemonList.map((pokemon, index) => (
+          <li key={index}>
+            <PokemonListLinkStyle
+              to={`/${pokemon.name}`}
+            >
+              {pokemon.name}
+            </PokemonListLinkStyle>
+          </li>
+        ))}
+      </PokemonListStyle>
     </Wrapper>
   );
 };
